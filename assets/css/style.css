@@ -8,6 +8,7 @@
     --text-color-1: #ceab12;
     --text-color-2: #1e4877;
     --background-color-1: #388092;
+    --section-color-1: rgba(236, 236, 236, 0.692);
     --button-color: #88ad43;
 }
 
@@ -39,4 +40,32 @@ header h1 {
     font-size: 72px;
     font-weight: bold;
     text-shadow: 0 0 15px black;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    border: 1px red solid;
+    margin: 5vh auto;
+    background-color: var(--section-color-1);
+}
+
+#instructions-section {
+    margin-top: 1vh;
+}
+
+#instructions-section h2 {
+    font-size: 36px;
+}
+
+#instructions-section p {
+    font-size: 18px;
+    font-weight: 550;
+    text-align: center;
+    line-height: 1.6;
+    width: 40%;
+    margin: 15px auto;
 }
