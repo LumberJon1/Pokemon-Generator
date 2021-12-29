@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --text-color-1: #ceab12;
+    --text-color-2: #1e4877;
+    --background-color-1: #388092;
+    --button-color: #88ad43;
+}
+
+html {
+    color: var(--text-color-2);
+    background-color: var(--background-color-1);
+    font-family: sans-serif;
+}
+
+header {
+    height: 25vh;
+    position: relative;
+    border: 10px solid var(--text-color-1);
+}
+
+header img {
+    object-position: center;
+    object-fit: cover;
+    width: 100%;
+    height: 23.5vh;
+    opacity: 50%;
+}
+
+header h1 {
+    position: absolute;
+    left: 40%;
+    top: 40%;
+    color: var(--text-color-1);
+    font-size: 72px;
+    font-weight: bold;
+    text-shadow: 0 0 15px black;
+}
