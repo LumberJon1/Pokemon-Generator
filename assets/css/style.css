@@ -53,6 +53,9 @@ section {
     background-color: var(--section-color-1);
 }
 
+
+/*Instruction section styles*/
+
 #instructions-section {
     margin-top: 1vh;
 }
@@ -69,3 +72,53 @@ section {
     width: 40%;
     margin: 15px auto;
 }
+
+
+/*Pokemon section styles*/
+
+#pokemon-section {
+    height: 20vh;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+#pokemon-section h2 {
+    font-size: 36px;
+}
+
+#pokemon-section h3 {
+    font-size: 32px;
+    margin-top: 1vh;
+    color: var(--text-color-1);
+    text-shadow: 0 0 15px var(--text-color-2);
+}
+
+
+/*Type section styles*/
+
+#type-section {
+    margin-top: 1vh;
+    flex-direction: row;
+}
+
+.type-div {
+    margin: 0 2vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 15%;
+    padding: 1vh 0;
+}
+
+.type-div p {
+    font-weight: 600;
+    font-size: 20px;
+    background-color: var(--text-color-1);
+    border: 2px solid var(--text-color-2);
+    border-radius: 4px;
+    padding: 6px;
+}
+
+
+/*Randomize button styling*/
