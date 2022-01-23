@@ -4,73 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Document</title>
+    <title>Pokemon Type Randomizer</title>
 </head>
 <body>
 
-    <header>
-        <img src="./assets/images/pokemon-hero-image.jpg" alt="Pokemon Generator">
-        <h1>Pokemon Generator</h1>
+    <header class="row">
+        <img src="./assets/images/pokemon-hero-image.jpg" class="img-fluid" alt="Pokemon Generator">
+        <h1 class="text-center font-weight-bold text-warning bg-primary col-12">Pokemon Generator</h1>
     </header>
 
-    <section id="instructions-section">
-        <h2>Instructions</h2>
+    <main class="container">
 
-        <p id="instructions">
-            Welcome to Pokemon Generator!
-            <br><br>
-            Click the "Randomize" button below to generate a random pokemon.
-            Its number will appear in the box labeled "Pokemon."
-            <br><br>
-            The button will also generate two random types for the pokemon, which can 
-            be used as a prompt to reimagine and draw that pokemon as one or both of those
-            new types.
-            <br><br>
-            If the original pokemon has only one type, feel free to use only one of the 
-            randomly-generated types when you draw the new version of the pokemon.
-        </p>
-    </section>
+        <section id="instructions-section" class="row">
+            <div class="col-12 col-md-10">
+                <h2 class="text-center">Instructions</h2>
+                <p id="instructions" class="text-center mx-auto col-12 col-lg-6 bg-light shadow p-2 rounded">
+                    Welcome to Pokemon Generator!
+                    <br><br>
+                    Click the "Randomize" button below to generate a random pokemon.
+                    Its number will appear in the box labeled "Pokemon."
+                    <br><br>
+                    The button will also generate two random types for the pokemon, which can 
+                    be used as a prompt to reimagine and draw that pokemon as one or both of those
+                    new types.
+                    <br><br>
+                    If the original pokemon has only one type, feel free to use only one of the 
+                    randomly-generated types when you draw the new version of the pokemon.
+                </p>    
+            </div>
+        </section>
 
-    <!--
-        This section will display a randomized number between 1 and the number of
-    pokemon across all generations.  Initial state will just show a number, but
-    eventually we want this to display a sprite of that pokemon.
-    -->
-    <section id="pokemon-section">
+        <!--Pokemon Section-->
+        <section id="pokemon-section" class="row vh-50">
+            <div class="col-12 col-lg-10 d-flex flex-column align-items-center">
+                <h2>Pokemon</h2>
+                <div id="pokemon-img-container" class="border border-secondary rounded mb-4" style="height: 20vh; width: 80%;"></div>
+            </div>
+        </section>
 
-        <h2>Pokemon</h2>
+        <!--Randomize Button Section-->
+        <section id="button-section" class="row my-2 mx-auto d-flex justify-content-center">
+            <button id="randomize-button" class="btn btn-primary text-warning font-weight-bold shadow">Randomize</button>
+        </section>
+    
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="assets/javascript/script.js"></script>
 
-        <h3 id="pokemon-number">#1</h3>
-
-    </section>
-
-    <!--
-        This section will display two random types to start, but will eventually want to 
-    dynamically select either one or two types depending on the original pokemon.
-    -->
-    <section id="type-section">
-
-        <div id="type-div-1" class="type-div">
-            <h3>Type 1:</h3>
-            <p>Type</p>
-            <!--<img src="#" alt="type-icon-1">-->
-        </div>
-
-        <div id="type-div-2" class="type-div">
-            <h3>Type 2:</h3>
-            <p>Type</p>
-            <!--<img src="#" alt="type-icon-2">-->
-        </div>
-
-    </section>
-
-    <section id="button-section">
-
-        <button id="randomize-button">Randomize</button>
-
-    </section>
-
-    <script src="assets/javascript/script.js"></script>
+    </main>
 </body>
 </html>
