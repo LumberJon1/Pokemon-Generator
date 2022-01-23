@@ -1,3 +1,12 @@
 p {
     font-size: 12px;
 }
+
+.poke-name {
+    text-shadow: 0 0 5px #2f48b6;
+    text-transform: capitalize;
+}
+
+.poke-img {
+    width: 60%;
+}

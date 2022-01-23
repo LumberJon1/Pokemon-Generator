@@ -17,7 +17,27 @@ var generatePokemon= function(pokemon) {
     pokeSprite = pokemon.sprites.front_default; //the URL of a PNG file from the API
     pokeTypes = pokemon.types; //array of objects.  The type string is pokeTypes[i].type.name;
 
-    //Create DOM elements based on these values
+    //Declare necessary DOM element variables
+    var pokemonSectionEl = $("#pokemon-section");
+    var pokemonTitleEl = $("#pokemon-title");
+    var pokemonDisplayEl = $("#pokemon-img-container");
+
+    //Create DOM elements and create/append based on the object values
+    pokemonTitleEl.text(pokeName)
+        .addClass("text-warning font-weight-bold poke-name");
+
+    //Remove any previous images from the DOM
+    $("#pokemon-img-container").children("img").remove();
+
+    //Add image from the URL for the current pokemon's sprite
+    var sprite = $("<img>").attr("src", pokeSprite).addClass("poke-img");
+    pokemonDisplayEl.append(sprite);
+
+    //If there are no types currently being displayed, create them
+
+
+    //Otherwise, modify them
+
     return;
 
 };
