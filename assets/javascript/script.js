@@ -18,7 +18,6 @@ var getTypes = function() {
     });
 }
 
-
 randomizeButtonEl = document.querySelector("#randomize-button");
 
 var generatePokemon= function(pokemon) {
@@ -27,26 +26,6 @@ var generatePokemon= function(pokemon) {
     pokeName = pokemon.name;
     pokeSprite = pokemon.sprites.front_default; //the URL of a PNG file from the API
     pokeTypes = pokemon.types; //array of objects.  The type string is pokeTypes[i].type.name;
-
-    console.log(pokemon);
-
-    //Declare necessary DOM element variables
-    var pokemonSectionEl = $("#pokemon-section");
-    var pokemonTitleEl = $("#pokemon-title");
-    var pokemonDisplayEl = $("#pokemon-img-container");
-
-    //Create DOM elements and create/append based on the object values
-    pokemonTitleEl.text(pokeName)
-        .addClass("text-warning font-weight-bold poke-name");
-
-    //Remove any previous images from the DOM
-    $("#pokemon-img-container").children("img").remove();
-
-    //Add image from the URL for the current pokemon's sprite
-    var sprite = $("<img>").attr("src", pokeSprite).addClass("poke-img");
-    pokemonDisplayEl.append(sprite);
-
-    //Clear any previous types listed
 
     //Get the number and name of types the pokemon originally had
     var typeNumber = 1;
@@ -72,17 +51,44 @@ var generatePokemon= function(pokemon) {
         }
     };
 
+    //Declare necessary DOM element variables
+    var pokemonSectionEl = $("#pokemon-section");
+    var pokemonTitleEl = $("#pokemon-title");
+    var pokemonDisplayEl = $("#pokemon-img-container");
 
-    //Create elements from the typeList
-    // var typesDiv = $("<div>").addClass("d-flex justify-content-center col-4 mx-auto mb-3 mt-1");
+    //Create DOM elements and create/append based on the object values
+    pokemonTitleEl.text(pokeName)
+        .addClass("text-warning font-weight-bold poke-name");
 
-    // for (var i = 0; i < typeList.length; i++) {
-    //     typesDiv.append("<span>").text(typeList[i])
-    //         .addClass("badge badge-pill badge-success");
-    // };
+    //Remove any previous images from the DOM
+    $("#pokemon-img-container").children("img").remove();
 
-    console.log("new type list:", originTypeList);
-    //pokemonSectionEl.append(typesDiv);
+    //Add image from the URL for the current pokemon's sprite
+    var sprite = $("<img>").attr("src", pokeSprite).addClass("poke-img");
+    pokemonDisplayEl.append(sprite);
+
+    //Append one or both types to the DOM...
+    //1. If the element already exists, replace content with the new values.
+    if ($("#pokemon-section").children(".type-badge").text() != "") {
+        console.log("Type span(s) already exist.  Modifying content...");
+        $(".type-badge").each(function(index) {
+            $(this).text(originTypeList[index]);
+            console.log("originTypeList[index]: ", originTypeList[index]);
+            console.log("$(this): ", $(this));
+            console.log("Text content: ", $(this).text());
+        })
+    }
+    //2. IF it doesn't exist, create new elements and append to document. 
+    else {
+        console.log("No type currently displayed.  Creating and appending type span...");
+        for (var i = 0; i < typeNumber; i++) {
+            var currentType = $("<span>")
+                .addClass("badge badge-success type-badge")
+                .text(originTypeList[i]);
+
+            pokemonSectionEl.append(currentType);
+        };
+    };
 
     return;
 
