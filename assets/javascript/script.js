@@ -19,7 +19,6 @@ var getTypes = function() {
 }
 
 
-
 randomizeButtonEl = document.querySelector("#randomize-button");
 
 var generatePokemon= function(pokemon) {
@@ -28,6 +27,8 @@ var generatePokemon= function(pokemon) {
     pokeName = pokemon.name;
     pokeSprite = pokemon.sprites.front_default; //the URL of a PNG file from the API
     pokeTypes = pokemon.types; //array of objects.  The type string is pokeTypes[i].type.name;
+
+    console.log(pokemon);
 
     //Declare necessary DOM element variables
     var pokemonSectionEl = $("#pokemon-section");
@@ -47,30 +48,41 @@ var generatePokemon= function(pokemon) {
 
     //Clear any previous types listed
 
-    //Display either one or two types for the pokemon
-    var typeList = [];
+    //Get the number and name of types the pokemon originally had
+    var typeNumber = 1;
+    var originTypeList = [];
 
-    if (pokeTypes.length === 1) {
-        //Only generate one type
-        typeList.push(pokeTypes[0].type.name);
+    for (var i = 0; i < pokeTypes.length; i++) {
+        originTypeList.push(pokeTypes[i].type.name);
+        typeNumber = i + 1;
     }
-    else {
-        //generate two types
-        for (var i = 0; i < pokeTypes.length; i++) {
-            typeList.push(pokeTypes[i].type.name);
+
+    //Assign a number of new types to the pokemon equal to typeNumber from the global types[] array
+    for (var i = 0; i < typeNumber; i++) {
+        var newTypeIndex = Math.floor(Math.random() * 20);
+        console.log("new type index:", newTypeIndex);
+        console.log("types[newTypeIndex]:", types[newTypeIndex]);
+        if (originTypeList[i] != types[newTypeIndex]) {
+            console.log("Replacing "+originTypeList[i]+" with "+types[newTypeIndex]+"...");
+            originTypeList[i] = types[newTypeIndex];
         }
-    }
-
-    //Create elements from the typeList
-    var typesDiv = $("<div>").addClass("d-flex justify-content-center col-4 mx-auto mb-3 mt-1");
-
-    for (var i = 0; i < typeList.length; i++) {
-        typesDiv.append("<span>").text(typeList[i])
-            .addClass("badge badge-pill badge-success");
+        else {
+            console.log("Pokemon already has type "+tpyes[newTypeIndex]+".  Restarting loop.");
+            i--;
+        }
     };
 
-    console.log("typeList:", typeList);
-    pokemonSectionEl.append(typesDiv);
+
+    //Create elements from the typeList
+    // var typesDiv = $("<div>").addClass("d-flex justify-content-center col-4 mx-auto mb-3 mt-1");
+
+    // for (var i = 0; i < typeList.length; i++) {
+    //     typesDiv.append("<span>").text(typeList[i])
+    //         .addClass("badge badge-pill badge-success");
+    // };
+
+    console.log("new type list:", originTypeList);
+    //pokemonSectionEl.append(typesDiv);
 
     return;
 
