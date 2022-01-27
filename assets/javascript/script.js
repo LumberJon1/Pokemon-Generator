@@ -77,7 +77,8 @@ var generatePokemon= function(pokemon) {
 
         //For each type in the new generated typing, append a new span and add text/classes
         for (var i = 0; i < typeNumber; i++) {
-            $("#badge-div").append("<span>").addClass("type-badge");
+            var badgeSpan = $("<span>").addClass("badge badge-success type-badge mx-1");
+            $("#badge-div").append(badgeSpan);
         }
 
         $(".type-badge").each(function(index) {
