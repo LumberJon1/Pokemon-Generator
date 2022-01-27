@@ -46,7 +46,7 @@ var generatePokemon= function(pokemon) {
             originTypeList[i] = types[newTypeIndex];
         }
         else {
-            console.log("Pokemon already has type "+tpyes[newTypeIndex]+".  Restarting loop.");
+            console.log("Pokemon already has type.  Restarting loop.");
             i--;
         }
     };
@@ -69,7 +69,7 @@ var generatePokemon= function(pokemon) {
 
     //Append one or both types to the DOM...
     //1. If the element already exists, replace content with the new values.
-    if ($("#pokemon-section").children(".type-badge").text() != "") {
+    if ($("#badge-div").children(".type-badge").text() != "") {
         console.log("Type span(s) already exist.  Modifying content...");
         $(".type-badge").each(function(index) {
             $(this).text(originTypeList[index]);
@@ -80,13 +80,15 @@ var generatePokemon= function(pokemon) {
     }
     //2. IF it doesn't exist, create new elements and append to document. 
     else {
+        
+        pokemonSectionEl.append("<div>").addClass("col-12 d-flex justify-content-center align-items-center").attr("id", "badge-div");
         console.log("No type currently displayed.  Creating and appending type span...");
         for (var i = 0; i < typeNumber; i++) {
             var currentType = $("<span>")
-                .addClass("badge badge-success type-badge")
+                .addClass("badge badge-success type-badge mx-1")
                 .text(originTypeList[i]);
 
-            pokemonSectionEl.append(currentType);
+            $("#badge-div").append(currentType);
         };
     };
 
