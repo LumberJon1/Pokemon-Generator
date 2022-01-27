@@ -71,6 +71,15 @@ var generatePokemon= function(pokemon) {
     //1. If the element already exists, replace content with the new values.
     if ($("#badge-div").children(".type-badge").text() != "") {
         console.log("Type span(s) already exist.  Modifying content...");
+
+        //Remove previous spans entirely from the DOM
+        $("#badge-div").children("span").remove();
+
+        //For each type in the new generated typing, append a new span and add text/classes
+        for (var i = 0; i < typeNumber; i++) {
+            $("#badge-div").append("<span>").addClass("type-badge");
+        }
+
         $(".type-badge").each(function(index) {
             $(this).text(originTypeList[index]);
             console.log("originTypeList[index]: ", originTypeList[index]);
@@ -81,7 +90,11 @@ var generatePokemon= function(pokemon) {
     //2. IF it doesn't exist, create new elements and append to document. 
     else {
         
-        pokemonSectionEl.append("<div>").addClass("col-12 d-flex justify-content-center align-items-center").attr("id", "badge-div");
+        badgeDiv = $("<div>").addClass("col-12 d-flex justify-content-center align-items-center")
+            .attr("id", "badge-div");
+
+        pokemonSectionEl.append(badgeDiv);
+
         console.log("No type currently displayed.  Creating and appending type span...");
         for (var i = 0; i < typeNumber; i++) {
             var currentType = $("<span>")
