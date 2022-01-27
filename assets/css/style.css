@@ -10,3 +10,10 @@ p {
 .poke-img {
     width: 60%;
 }
+
+#hero-img {
+    object-position: center;
+    object-fit: cover;
+    max-height: 50vh;
+    min-width: 100vw;
+}
