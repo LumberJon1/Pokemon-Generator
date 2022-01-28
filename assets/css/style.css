@@ -18,6 +18,11 @@ p {
     min-width: 100vw;
 }
 
+.badge {
+    color: white;
+    text-shadow: 0 0 2px black;
+}
+
 .type-normal {
     background-color: #A8A878;
 }
@@ -92,4 +97,8 @@ p {
 
 .type-shadow {
     background-color: #3f3947;
+}
+
+.type-flying {
+    background-color: #a88cd4;
 }
