@@ -1,4 +1,5 @@
 //Selector variables
+randomizeButtonEl = document.querySelector("#randomize-button");
 
 //array to hold types
 var types = [];
@@ -14,11 +15,14 @@ var getTypes = function() {
             for (var i = 0; i < pokeTypes.results.length; i++) {
                 types.push(pokeTypes.results[i].name);
             }
+            console.log(types);
         });
     });
 }
 
-randomizeButtonEl = document.querySelector("#randomize-button");
+//Add classes to spans to color them appropriately
+
+
 
 var generatePokemon= function(pokemon) {
 
