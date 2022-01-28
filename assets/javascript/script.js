@@ -15,13 +15,26 @@ var getTypes = function() {
             for (var i = 0; i < pokeTypes.results.length; i++) {
                 types.push(pokeTypes.results[i].name);
             }
-            console.log(types);
         });
     });
 }
 
 //Add classes to spans to color them appropriately
+var colorType = function(element) {
 
+    //Get the text content from the element
+    var elementText = $(element).text();
+    console.log("text content: ", elementText);
+
+    //Manipulate the string to add ".type-" to the textContent's value and assign to a new var
+    replacementText = "type-"+elementText;
+    console.log("replacement text: ", replacementText);
+
+    //Add that specific class to the element
+    $(element).addClass(replacementText);
+
+
+};
 
 
 var generatePokemon= function(pokemon) {
@@ -43,14 +56,11 @@ var generatePokemon= function(pokemon) {
     //Assign a number of new types to the pokemon equal to typeNumber from the global types[] array
     for (var i = 0; i < typeNumber; i++) {
         var newTypeIndex = Math.floor(Math.random() * 20);
-        console.log("new type index:", newTypeIndex);
-        console.log("types[newTypeIndex]:", types[newTypeIndex]);
+        
         if (originTypeList[i] != types[newTypeIndex]) {
-            console.log("Replacing "+originTypeList[i]+" with "+types[newTypeIndex]+"...");
             originTypeList[i] = types[newTypeIndex];
         }
         else {
-            console.log("Pokemon already has type.  Restarting loop.");
             i--;
         }
     };
@@ -81,15 +91,13 @@ var generatePokemon= function(pokemon) {
 
         //For each type in the new generated typing, append a new span and add text/classes
         for (var i = 0; i < typeNumber; i++) {
-            var badgeSpan = $("<span>").addClass("badge badge-success type-badge mx-1");
+            var badgeSpan = $("<span>").addClass("badge type-badge mx-1");
             $("#badge-div").append(badgeSpan);
         }
 
         $(".type-badge").each(function(index) {
             $(this).text(originTypeList[index]);
-            console.log("originTypeList[index]: ", originTypeList[index]);
-            console.log("$(this): ", $(this));
-            console.log("Text content: ", $(this).text());
+            colorType(this);
         })
     }
     //2. IF it doesn't exist, create new elements and append to document. 
@@ -100,13 +108,13 @@ var generatePokemon= function(pokemon) {
 
         pokemonSectionEl.append(badgeDiv);
 
-        console.log("No type currently displayed.  Creating and appending type span...");
         for (var i = 0; i < typeNumber; i++) {
             var currentType = $("<span>")
-                .addClass("badge badge-success type-badge mx-1")
+                .addClass("badge type-badge mx-1")
                 .text(originTypeList[i]);
 
             $("#badge-div").append(currentType);
+            colorType(currentType);
         };
     };
 
